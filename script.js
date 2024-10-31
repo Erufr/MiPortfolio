@@ -23,4 +23,26 @@ document.addEventListener('DOMContentLoaded', function () {
         const translateX = -currentIndex * 600; 
         certificadosLista.style.transform = `translateX(${translateX}px)`; 
     };
+
+    const nextBtn = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+            currentIndex = (currentIndex + 1) % certificadosElementos.length; 
+            updateCarrusel();
+        });
+    } else {
+        console.error("Botón de siguiente no encontrado.");
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function () {
+            currentIndex = (currentIndex - 1 + certificadosElementos.length) % certificadosElementos.length; 
+            updateCarrusel();
+        });
+    } else {
+        console.error("Botón de anterior no encontrado.");
+    }
+
 });

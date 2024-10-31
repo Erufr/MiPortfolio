@@ -1,19 +1,26 @@
-const certificadosLista = document.querySelector('.certificados__lista');
-const certificadosElementos = document.querySelectorAll('.certificados__elemento');
-let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function () {
+    
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) { 
+        downloadBtn.addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.href = 'assets/CvErikaFrias.pdf';  
+            link.download = 'CvErikaFrias.pdf';    
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    } else {
+        console.error("Botón de descarga no encontrado.");
+    }
 
-const updateCarrusel = () => {
-    const totalElementos = certificadosElementos.length;
-    const translateX = -currentIndex * 600; 
-    certificadosLista.style.transform = `translateX(${translateX}px)`; 
-};
+    const certificadosLista = document.querySelector('.certificados__lista');
+    const certificadosElementos = document.querySelectorAll('.certificados__elemento');
+    let currentIndex = 0;
 
-document.getElementById('next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % certificadosElementos.length; 
-    updateCarrusel();
-});
-
-document.getElementById('prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + certificadosElementos.length) % certificadosElementos.length; 
-        updateCarrusel();
+    const updateCarrusel = () => {
+        const totalElementos = certificadosElementos.length;
+        const translateX = -currentIndex * 600; 
+        certificadosLista.style.transform = `translateX(${translateX}px)`; 
+    };
 });

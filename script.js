@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (downloadBtn) { 
         downloadBtn.addEventListener('click', function () {
             const link = document.createElement('a');
-            link.href = 'assets/CvErikaFrias.pdf';  
-            link.download = 'CvErikaFrias.pdf';    
+            link.href = 'assets/CVErikaFrias.pdf';  
+            link.download = 'CVErikaFrias.pdf';    
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
